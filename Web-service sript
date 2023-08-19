@@ -1,0 +1,37 @@
+# Varibals
+PACKAGES="wget unzip apache2 "
+SVC="apache2"
+URL="https://bootstrapmade.com/upconstruction-bootstrap-construction-website-template/download/"
+ART_NAME="UpConstruction.zip"
+
+#installing Packages
+echo "#################################################"
+echo "Installing packages"
+echo "#################################################"
+sudo apt install -y $PACKAGES
+echo
+
+# Start and enable a service
+echo "#################################################"
+echo "Starting a service and enable it"
+echo "#################################################"
+sudo systemctl start $SVC
+sudo systemctl enable $SVC
+echo
+
+#Download webfiles
+echo "#################################################"
+echo "Make a director and Download webfile"
+echo "#################################################"
+sudo mkdir /tmp/webfiles
+sudo cd /tmp/webfiles
+echo
+
+echo "#################################################"
+echo "Downloading files"
+echo "#################################################"
+sudo wget $URL
+sudo unzip $ART_NAME
+cd $ART_NAME
+cp -r /tmp/webfiles/UpContruction/* /var/www/html
+~                                                   
